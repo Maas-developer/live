@@ -1,0 +1,173 @@
+/* Base styles */
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f4f4;
+}
+
+header {
+    background-color: #FF69B4; /* Pink color */
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    color: #FF69B4; /* Pink color */
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+button {
+    background-color: #FF69B4; /* Pink color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #FF1493; /* Darker pink */
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+select {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.alert {
+    color: red;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Keep the same font-family on mobile */
+    body {
+        font-family: 'Comic Sans MS', sans-serif;
+    }
+
+    header {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    nav a {
+        padding: 5px;
+        font-size: 1rem;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-container h2 {
+        font-size: 1.4rem;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+
+    .attendance-table th, .attendance-table td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Keep the same font-family on mobile */
+    body {
+        font-family: 'Comic Sans MS', sans-serif;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .form-container {
+        padding: 10px;
+    }
+
+    .form-container h2 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    table th, table td {
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    label, input, select {
+        font-size: 0.9rem;
+    }
+}

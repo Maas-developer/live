@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Monitoring - Happy Kids</title>
+    <link rel="stylesheet" href="/CSS/online_monitoring.css"> <!-- Link to the specific CSS -->
+</head>
+<body>
+    <div class="navbar">
+        <a href="/index.html">Attendance</a>
+        <a href="/Camera_Access/cameralogin.html" class="active">Online Monitoring</a>
+        <a href="/Student_identification/Index_QR.html">Student Identification</a>
+    
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/index.html">Attendance</a>
+        <a href="/Camera_Access/cameralogin.html">Online Monitoring</a>
+        <a href="/Student_identification/Index_QR.html">Student Identification</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="page-title kolathur">TN HappyKids -Pollachi LIVE</h1> <!-- Added the class "kolathur" here -->
+
+        <!-- Stream Section -->
+        <div class="stream-container">
+            <iframe 
+              width="800" 
+              height="450" 
+              src="https://player.twitch.tv/?channel=tnhappykids_pollachi&parent=attendance.tnhappykids.in" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Information Section -->
+        <p class="message">
+            Welcome to the live monitoring stream for TN Happy Kids Pollachi. 
+            This feature is exclusively for authorized users.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            Welcome to TN Happy Kids! <br>
+            <a href="https://www.tnhappykids.in/contact-us">Contact Us</a>
+        </p>
+    </div>
+
+    <script>
+        // Toggle the mobile menu when the hamburger icon is clicked
+          function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active'); // Toggle the "active" class
+          }
+        </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Monitoring Login - TN Happy Kids</title>
+    <link rel="stylesheet" href="/CSS/online_monitoring.css">
+    <style>
+        /* Additional inline styles for the message div */
+        #inputMessage {
+            display: none;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+<div class="navbar">
+    <a href="/index.html">Attendance</a>
+    <a href="/Camera_Access/cameralogin.html" class="active">Online Monitoring</a>
+    <a href="/Student_identification/Index_QR.html">Student Identification</a>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/index.html">Attendance</a>
+    <a href="/Camera_Access/cameralogin.html">Online Monitoring</a>
+    <a href="/Student_identification/Index_QR.html">Student Identification</a>
+</div>
+
+
+    <div class="container">
+        <h1 class="page-title">Online Monitoring Login</h1>
+
+        <!-- Login Form Section -->
+        <div class="login-container">
+            <div class="login-box">
+                <h2>Login to Access Live Monitoring</h2>
+                <form id="onlineMonitoringLoginForm" onsubmit="return validateOnlineMonitoringLogin()">
+                    <label for="onlineMonitoringUsername">Username</label>
+                    <input type="text" id="onlineMonitoringUsername" name="username" required>
+
+                    <label for="onlineMonitoringPassword">Password</label>
+                    <input type="password" id="onlineMonitoringPassword" name="password" required>
+                    
+                    <!-- Small div to show messages below the password input -->
+                    <div id="inputMessage"></div>
+
+                    <div class="forgot-password">
+                        <a href="/Camera_Access/Forgot.html">Forgot Password?</a>
+                    </div>
+
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="img">
+            <img src="/Images/logo.png" width="150px" alt="Logo" class="img-responsive">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Welcome to TN Happy Kids! <br>
+        <a href="https://www.tnhappykids.in/contact-us">Contact Us</a></p>
+    </div>
+
+    <script>
+        // Login credentials for validation
+        const loginData = {
+            kolathur: { username: "kolathurHK", password: "TNHK67", redirect: "/Camera_Access/Online_monitoring_Kolathur.html" },
+            tiruppur: { username: "tiruppurHK", password: "TNHK68", redirect: "/Camera_Access/Online_monitoring_Tiruppur.html" },
+            thambaram: { username: "tambaramHK", password: "TNHK69", redirect: "/Camera_Access/Online_monitoring_Tambaram.html" },
+            pollachi: { username: "pollachiHK", password: "TNHK70", redirect: "/Camera_Access/Online_monitoring_Pollachi.html" },
+            coimbatore: { username: "coimbatoreHK", password: "TNHK070", redirect: "/Camera_Access/Online_monitoring_Coimbatore.html" }
+        };
+
+        // Validate login
+        function validateOnlineMonitoringLogin() {
+            const username = document.getElementById('onlineMonitoringUsername').value.trim();
+            const password = document.getElementById('onlineMonitoringPassword').value.trim();
+            const messageDiv = document.getElementById('inputMessage'); // Target the div below the password input
+
+            // Show the message box
+            messageDiv.style.display = "block";
+
+            // Check each branch's credentials
+            for (let branch in loginData) {
+                if (username === loginData[branch].username && password === loginData[branch].password) {
+                    // Success message styling
+                    messageDiv.style.color = 'green';
+                    messageDiv.style.border = '2px solid green';
+                    messageDiv.style.padding = '10px';
+                    messageDiv.style.backgroundColor = '#e6ffe6';
+                    messageDiv.innerText = `Successfully Logged In to ${branch.charAt(0).toUpperCase() + branch.slice(1)}! Redirecting...`;
+
+                    // Redirect to the appropriate camera page for the branch after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = loginData[branch].redirect;
+                    }, 2000);
+
+                    return false; // Prevent form submission
+                }
+            }
+
+            // If no credentials matched
+            messageDiv.style.color = 'red';
+            messageDiv.style.border = '2px solid red';
+            messageDiv.style.padding = '10px';
+            messageDiv.style.backgroundColor = '#ffe6e6';
+            messageDiv.innerText = 'Invalid Credentials. Please try again.';
+
+            return false; // Prevent form submission
+        }
+    </script>
+
+    <script>
+    // Toggle the mobile menu when the hamburger icon is clicked
+      function toggleMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('active'); // Toggle the "active" class
+      }
+    </script>
+
+</body>
+</html>

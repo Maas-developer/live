@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-School & Tution Login - TN Happy Kids</title>
+    <link rel="stylesheet" href="CSS/index.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+<div class="navbar">
+    <a href="/index.html">Attendance</a>
+    <a href="/Camera_Access/cameralogin.html" class="active">Online Monitoring</a>
+    <a href="/Student_identification/Index_QR.html">Student Identification</a>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/index.html">Attendance</a>
+    <a href="/Camera_Access/cameralogin.html">Online Monitoring</a>
+    <a href="/Student_identification/Index_QR.html">Student Identification</a>
+</div>
+
+    
+    
+    <div class="container">
+    <h1 class="page-title" style="background-color:#FF69B4;color: white;padding: 5px;">Login - TN Happy Kids</h1>
+
+    <div class="login-container">
+        <!-- Pre School Login on the left side -->
+        <div class="login-box" id="preSchoolLoginBox">
+            <h2>Pre School Report Login</h2>
+            <form id="preSchoolLoginForm" onsubmit="return validateLogin('preSchool')">
+                <label for="branchSelect">Select Branch</label>
+                <select id="branchSelect" onchange="resetFields('preSchool')">
+                    <option value="kolathur">Kolathur</option>
+                    <option value="tiruppur">Tiruppur</option>
+                    <option value="thambaram">Thambaram</option>
+                    <option value="pollachi">Pollachi</option>
+                    <option value="coimbatore">Coimbatore</option>
+                </select>
+
+                <label for="username">Username</label>
+                <input type="text" id="preSchoolUsername" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="preSchoolPassword" name="password" required>
+
+                <input type="submit" value="Login">
+            </form>
+        </div>
+
+        <!-- Tution Login on the right side -->
+        <div class="login-box" id="tutionLoginBox">
+            <h2>Tution Report Login</h2>
+            <form id="tutionLoginForm" onsubmit="return validateLogin('tution')">
+                <label for="branchSelectTution">Select Branch</label>
+                <select id="branchSelectTution" onchange="resetFields('tution')">
+                    <option value="kolathur">Kolathur</option>
+                    <option value="tiruppur">Tiruppur</option>
+                    <option value="thambaram">Thambaram</option>
+                    <option value="pollachi">Pollachi</option>
+                    <option value="coimbatore">Coimbatore</option>
+                </select>
+
+                <label for="username">Username</label>
+                <input type="text" id="tutionUsername" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="tutionPassword" name="password" required>
+
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message Box -->
+    <div id="message" class="message"></div>
+
+<div class="img">
+    <img src="images/logo.png" alt="Logo" class="img-responsive">
+</div>
+<div class="footer">
+    <p style="color: deeppink;">Welcome to TN Happy Kids! <br>
+</div>
+<a href="#" style="color: deeppink;">Contact Us</a></p>
+</div>
+<script>
+// Branch-wise Login credentials for Pre-School and Tution
+const loginData = {
+    preSchool: {
+        kolathur: { username: "kolathurPS", password: "kolathur123" },
+        tiruppur: { username: "tiruppurPS", password: "tiruppur123" },
+        thambaram: { username: "thambaramPS", password: "thambaram123" },
+        pollachi: { username: "pollachiPS", password: "pollachi123" },
+        coimbatore: { username: "coimbatorePS", password: "coimbatore123" }
+    },
+    tution: {
+        kolathur: { username: "kolathurT", password: "kolathur123T" },
+        tiruppur: { username: "tiruppurT", password: "tiruppur123T" },
+        thambaram: { username: "thambaramT", password: "thambaram123T" },
+        pollachi: { username: "pollachiT", password: "pollachi123T" },
+        coimbatore: { username: "coimbatoreT", password: "coimbatore123T" }
+    }
+};
+
+// Reset username and password fields when branch selection changes
+function resetFields(type) {
+    const usernameField = document.getElementById(`${type}Username`);
+    const passwordField = document.getElementById(`${type}Password`);
+    
+    // Clear username and password fields when branch is changed
+    usernameField.value = '';
+    passwordField.value = '';
+}
+
+// Validate Login
+function validateLogin(type) {
+    const branch = document.getElementById(`branchSelect${type === 'preSchool' ? '' : 'Tution'}`).value;
+    const username = document.getElementById(`${type}Username`).value;
+    const password = document.getElementById(`${type}Password`).value;
+
+    // Check if entered credentials are correct for the selected branch
+    if (username === loginData[type][branch].username && password === loginData[type][branch].password) {
+        // Display success message
+        document.getElementById('message').innerText = `Successfully Logged In to ${type.charAt(0).toUpperCase() + type.slice(1)} - ${branch.charAt(0).toUpperCase() + branch.slice(1)}!`;
+        
+        // Redirect to the appropriate branch page after 2 seconds
+        setTimeout(() => {
+            window.location.href = `${type}_${branch}.html`; // Make sure the corresponding page exists
+        }, 2000);  // Delay the redirection by 2 seconds for better UX
+    } else {
+        // Show error message if credentials are incorrect
+        document.getElementById('message').innerText = 'Invalid Credentials. Please try again.';
+    }
+    return false; // Prevent form submission
+}
+
+function toggleMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('active');  // Toggle the 'active' class
+}
+
+</script>
+
+<script>
+    // Toggle the mobile menu when the hamburger icon is clicked
+      function toggleMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('active'); // Toggle the "active" class
+      }
+    </script>
+
+</body>
+</html>

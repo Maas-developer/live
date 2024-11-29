@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coimbatore Pre-School - Attendance and Reports</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Pre School Attendance - Coimbatore</h1>
+        <nav>
+            <a href="index.html">Home</a> | <a href="logout.html">Logout</a>
+        </nav>  
+    </header>
+
+    <div class="container">
+
+        <!-- Add Student Form -->
+        <div class="form-container" id="addStudentFormContainer">
+            <h2>Add New Student</h2>
+            <form id="addStudentForm" onsubmit="return addStudent()">
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName" required>
+
+                <label for="rollNumber">Roll Number:</label>
+                <input type="text" id="rollNumber" name="rollNumber" required>
+
+                <button type="submit">Add Student</button>
+            </form>
+        </div>
+
+        <!-- Attendance Form for Coimbatore -->
+        <div class="form-container" id="attendanceFormContainer">
+            <h2>Daily Attendance Form</h2>
+
+            <label for="attendanceDate">Select Date</label>
+            <input type="date" id="attendanceDate" required>
+
+            <form id="attendanceForm">
+                <table class="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Roll Number</th>
+                            <th>Present</th>
+                            <th>Absent</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceList">
+                        <!-- Attendance rows will be dynamically added here -->
+                    </tbody>
+                </table>
+
+                <div class="form-actions">
+                    <button type="submit">Submit Attendance</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Report Generation and Download -->
+        <div class="form-container" id="reportFormContainer">
+            <h2>Download Attendance Report</h2>
+
+            <label for="monthSelect">Select Month:</label>
+            <select id="monthSelect">
+                <option value="">Select Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+
+            <label for="yearSelect">Select Year:</label>
+            <select id="yearSelect">
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+
+            <button onclick="downloadMonthlyReport()">Download Monthly Report</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TN Happy Kids. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let students = JSON.parse(localStorage.getItem('coimbatore_students')) || [];
+        let attendanceData = JSON.parse(localStorage.getItem('coimbatore_attendanceData')) || {};
+
+        // Load Students for Coimbatore branch
+        function loadStudents() {
+            const studentListContainer = document.getElementById('attendanceList');
+            studentListContainer.innerHTML = '';
+
+            students.forEach((student, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="text" name="studentName" value="${student.name}" readonly></td>
+                    <td><input type="text" name="rollNumber" value="${student.rollNumber}" readonly></td>
+                    <td><input type="radio" name="attendance${index}" value="present"> Present</td>
+                    <td><input type="radio" name="attendance${index}" value="absent"> Absent</td>
+                    <td><button type="button" onclick="deleteStudent(${index}, 'coimbatore')">Delete</button></td>
+                `;
+                studentListContainer.appendChild(row);
+            });
+        }
+
+        // Add a new student to the Coimbatore branch
+        function addStudent() {
+            const name = document.getElementById('studentName').value;
+            const rollNumber = document.getElementById('rollNumber').value;
+
+            if (name && rollNumber) {
+                const student = { name, rollNumber };
+                students.push(student);
+                localStorage.setItem('coimbatore_students', JSON.stringify(students));
+
+                document.getElementById('studentName').value = '';
+                document.getElementById('rollNumber').value = '';
+                loadStudents();
+            }
+            return false;
+        }
+
+        // Delete a student from the list
+        function deleteStudent(index, branch) {
+            students.splice(index, 1);
+            localStorage.setItem(`${branch}_students`, JSON.stringify(students));
+            loadStudents();
+        }
+
+        // Handle Attendance Submission
+        document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const date = document.getElementById('attendanceDate').value;
+            const month = new Date(date).toLocaleString('default', { month: 'long', year: 'numeric' });
+            const rows = document.querySelectorAll('.attendance-table tbody tr');
+
+            let dailyAttendance = [];
+            rows.forEach((row, index) => {
+                const studentName = row.querySelector('input[name="studentName"]').value;
+                const rollNumber = row.querySelector('input[name="rollNumber"]').value;
+                const attendance = row.querySelector(`input[name="attendance${index}"]:checked`)?.value;
+
+                if (studentName && rollNumber && attendance) {
+                    dailyAttendance.push({ studentName, rollNumber, attendance });
+                }
+            });
+
+            if (!attendanceData[month]) {
+                attendanceData[month] = {};
+            }
+
+            attendanceData[month][date] = dailyAttendance;
+            localStorage.setItem('coimbatore_attendanceData', JSON.stringify(attendanceData));
+            alert('Attendance submitted successfully!');
+        });
+
+        // Function to generate and download the monthly report in CSV format for selected month and year
+        function downloadMonthlyReport() {
+            const month = document.getElementById('monthSelect').value;
+            const year = document.getElementById('yearSelect').value;
+
+            if (!month || !year) {
+                alert("Please select both month and year.");
+                return;
+            }
+
+            const monthYear = `${month} ${year}`;
+            const monthlyData = attendanceData[monthYear] || {};
+
+            if (Object.keys(monthlyData).length === 0) {
+                alert("No attendance data found for the selected month and year.");
+                return;
+            }
+
+            // Create CSV data
+            let csvContent = "Date,Student Name,Roll Number,Attendance\n";
+
+            // Iterate through all dates in the month
+            for (const date in monthlyData) {
+                if (monthlyData.hasOwnProperty(date)) {
+                    const attendanceRecords = monthlyData[date];
+                    attendanceRecords.forEach(record => {
+                        csvContent += `${date},${record.studentName},${record.rollNumber},${record.attendance}\n`;
+                    });
+                }
+            }
+
+            // Create a Blob for the CSV file content
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+            // Create a link element to trigger the download
+            const link = document.createElement('a');
+            if (link.download !== undefined) {  // Check if the browser supports the download attribute
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `${monthYear}Pre-School_attendance_report.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();  // Simulate a click to trigger the download
+                document.body.removeChild(link);  // Remove the link after download
+            }
+        }
+
+        // Load students on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStudents();  // Load and display students
+        });
+    </script>
+
+</body>
+</html>

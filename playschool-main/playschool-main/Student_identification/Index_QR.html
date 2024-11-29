@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Coming Soon - Happy Kids</title>
+    <link rel="stylesheet" href="/CSS/online_monitoring.css"> <!-- Link to your existing CSS file -->
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/index.html">Attendance</a>
+        <a href="/Camera_Access/cameralogin.html" class="active">Online Monitoring</a>
+        <a href="/Student_identification/Index_QR.html">Student Identification</a>
+
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/index.html">Attendance</a>
+        <a href="/Camera_Access/cameralogin.html">Online Monitoring</a>
+        <a href="/Student_identification/Index_QR.html">Student Identification</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="page-title">Feature Coming Soon</h1>
+
+        <!-- Information Section -->
+        <div class="coming-soon-message">
+            <h2>This feature will be available soon!</h2>
+            <p>We are working on adding this feature to our website. Stay tuned for updates!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            Welcome to TN Happy Kids! <br>
+            <a href="https://www.tnhappykids.in/contact-us">Contact Us</a>
+        </p>
+    </div>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        // Toggle the mobile menu when the hamburger icon is clicked
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

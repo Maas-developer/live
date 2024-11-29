@@ -1,0 +1,438 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    background-image: url(/CSS/images/backround.svg);
+    background-repeat: no-repeat;
+    background-size: cover;      /* Makes the background image cover the entire page */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the image fixed in place */
+
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    display: flex;
+    justify-content: center; /* Align links at the center */
+    background-color: #FF69B4; /* Matches the site's pink theme */
+    padding: 10px 0;
+    position: sticky; /* Keeps the navbar visible at the top when scrolling */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s ease;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    background-color: #FF1493; /* Darker pink on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* General navbar link styles */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 3px solid transparent; /* Invisible underline */
+    transition: background-color 0.3s, border-bottom 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #FF1493; /* Darker pink on hover */
+    border-bottom: 3px solid white; /* Add underline on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Highlight the active page */
+.navbar a.active {
+    border-bottom: 3px solid white; /* White underline for the active page */
+    font-weight: bold; /* Optional: Make it visually distinct */
+}
+
+
+
+
+/* Page Title */
+.page-title {
+    font-size: 2em;
+    color: #FF69B4; /* Pink color */
+    margin-bottom: 20px;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.login-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 48%;
+    min-width: 300px;
+    margin-top: 20px;
+    text-align: left;
+    border: 4px solid red;
+}
+
+.login-box h2 {
+    color: #FF69B4;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #FF1493;
+}
+
+.message {
+    font-size: 1.1em;
+    color: green;
+    margin-top: 15px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.footer p {
+    line-height: 1.5;
+}
+
+.footer a {
+    color: #FF69B4;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-box {
+        width: 100%;
+    }
+    .page-title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.3em;
+    }
+    label, input, select {
+        font-size: 0.9em;
+    }
+    input[type="submit"] {
+        font-size: 0.9em;
+    }
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+    max-width: 160px;
+    display: block;
+    margin: 50px auto 20px auto; /* Adds more space above */
+    margin-top: 200px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center;
+    }
+    .navbar a {
+        padding: 10px;
+        width: 100%; /* Make links take the full width */
+        text-align: center;
+    }
+}
+
+.stream-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border: 4px solid pink;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+iframe {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f7f7f7;
+    background-image: url('images/background.svg'); /* Path to the background image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* Container Styles */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #FF69B4; /* Pink color */
+    padding: 10px 0;
+    position: sticky; /* Sticks to the top when scrolling */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    background-color: #FF1493; /* Darker pink on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.navbar a.active {
+    border-bottom: 3px solid white; /* White underline for active link */
+    font-weight: bold;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 2em;
+    color: #FF69B4; /* Pink color */
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #FF69B4;
+    color: white;
+    border-radius: 8px;
+}
+
+/* Stream Section */
+.stream-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    border: 4px solid pink;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+iframe {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Message Section */
+.message {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    text-align: center;
+    color: #666;
+    background-color: #f1f1f1;
+    padding: 20px 0;
+}
+
+.footer p {
+    line-height: 1.5;
+}
+
+.footer a {
+    color: #FF69B4;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .stream-container {
+        width: 90%;
+    }
+
+    .page-title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.3em;
+    }
+
+    .message {
+        font-size: 1em;
+    }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    align-items: center;
+    background-color: #FF69B4; /* Pink background */
+    width: 100%;
+}
+
+.mobile-menu a {
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    background-color: #FF1493; /* Darker pink on hover */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+    }
+
+    .navbar a {
+        display: none; /* Hide the regular menu items on small screens */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .mobile-menu.active {
+        display: flex; /* Display the mobile menu when active */
+    }
+}
+

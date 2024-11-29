@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - Thank You</title>
+    <style>
+        /* General Reset and Box Model */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun font for a kid-friendly look */
+            background-color: #f0f8ff; /* Light sky blue background */
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Heading Style */
+        .thank-you-title {
+            font-size: 36px;
+            color: #ff69b4; /* Fun pink color for kids */
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .thank-you-message {
+            font-size: 24px;
+            color: #32cd32; /* Green for success */
+            margin-bottom: 30px;
+        }
+
+        /* Redirect Message */
+        .redirect-message {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Button to Go to Homepage */
+        .go-home-button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for the button */
+        .go-home-button:hover {
+            background-color: #ff1493;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #ff69b4;
+        }
+
+        .footer a:hover {
+            color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="thank-you-title">Thank You!</h1>
+        <p class="thank-you-message">You have successfully logged out. We hope to see you again soon!</p>
+        <p class="redirect-message">You will be redirected to our homepage shortly.</p>
+        
+        <!-- Button to redirect manually -->
+        <a href="https://www.tnhappykids.in" class="go-home-button">Go to Homepage</a>
+        
+        <div class="footer">
+            <p>Visit us: <a href="https://www.tnhappykids.in" target="_blank">www.tnhappykids.in</a></p>
+        </div>
+    </div>
+
+    <!-- Auto Redirect after 5 seconds -->
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://www.tnhappykids.in"; // Redirect to homepage after 5 seconds
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+
+</body>
+</html>
